@@ -1,0 +1,55 @@
+{% extends 'navheader.html' %}
+{% block header %}
+
+{% if messages %}
+    {% for i in messages %}
+    {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>{{i}}</strong> 
+      </div>
+      {% endif %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>{{i}}</strong> 
+      </div>
+      {% endif %}
+    {% endfor %}
+{% endif %}
+
+<a href="{% url 'add' %}" class="btn btn-success my-3">Add Details +</a>
+ <table class="table table-secondary table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Admission No</th>
+            <th>Course</th>
+            <th>Date</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in students %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.admission_no}}</td>
+            <td>{{i.course}}</td>
+            <td>{{i.date}}</td>
+            <td>
+                <img src="{{i.photo.url}}" alt="" height="200px">
+            </td>
+            <td>
+                 <a href="{%url 'edit' i.id%}" class="btn"><i class="fa-solid fa-pen-to-square fa-lg" ></i></a>
+                 <a href="{%url 'delete' i.id%}" class="btn"><i class="fa-solid fa-trash fa-lg"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+ </table>
+
+ {% endblock header %}

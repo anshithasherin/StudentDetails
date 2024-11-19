@@ -1,0 +1,21 @@
+{% extends 'navheader.html' %}
+{% load static %}
+{% block header %}
+
+
+         
+        <div class="d-flex justify-content-center align-items-center" style="height:100vh">
+            <div class="w-75 bordered shadow p-3">
+             
+                <div class="text-center text-dark display-3 " style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                 Student Details</div>
+                 <img src="{% static 'image.jpg' %}" alt="" class="img ms-5">
+                <div class="d-grid mt-3">
+                <a href="{% url 'dash' %}" class="btn btn-borded-dark btn-lg" style="background-color: rgb(206, 177, 89); font-weight: 500;">Go to Student Details</a>
+                
+                </div>
+                
+            </div>
+
+        </div>
+    {% endblock header %}
